@@ -1,0 +1,12 @@
+{% extends 'forum/layout.html' %}
+
+{% block title %}Create new section{% endblock %}
+
+{% block content %}
+  <h2>Wpisz nazwe sekcji i jej opis:</h2>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn" type="submit"> Submit changes</button>
+  </form>
+{% endblock %}

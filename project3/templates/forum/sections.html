@@ -1,0 +1,11 @@
+{% extends 'forum/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{ title }}</h3>
+    <ul class="collection">
+        {% for section in sections %}
+            <li class="collection-item"><div>{{ section.title }}<a class="btn-small blue lighten-1 center-align" href="/forum/topics/{{ section.id }}">Sprawdz tematy w sekcji</a></div></li>
+        {% endfor %}
+    </ul>
+    {% if request.user.is_superuser %} <a href="/forum/sections/add" class="btn">Dodaj sekcje</a> {% endif %}
+{% endblock %}

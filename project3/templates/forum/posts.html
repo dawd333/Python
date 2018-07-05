@@ -1,0 +1,14 @@
+{% extends 'forum/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{ title }}: {{ topic.title }}</h3>
+    <ul class="collection">
+        {% for post in posts %}
+            <li class="collection-item"><div>{{ post.body }}
+                <a class="btn-small blue lighten-1" href="/forum/details/{{ post.id }}">Sprawdz szczegoly postu</a></div></li>
+        {% endfor %}
+    </ul>
+    <a href="/forum/posts/{{ topic.id }}/add" class="btn">Dodaj post</a>
+    {% if request.user.is_superuser %} <a href="/forum/posts/{{ topic.id }}/delete" class="btn">Usun temat</a> {% endif %}
+    <a href="/forum/topics/{{ topic.section.id }}" class="btn">Go Back</a>
+{% endblock %}

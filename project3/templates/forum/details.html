@@ -1,0 +1,23 @@
+{% extends 'forum/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">Temat postu: {{ post.topic }}, autor: {{ post.author }}</h3>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+<div class="card">
+    <div class="card-content">
+        {{ post.body }}
+    </div>
+    <div class="card-action">
+        Data wpisu: {{ post.created_at }}
+    </div>
+</div>
+    <a href="/forum/details/{{ post.id }}/modify" class="btn">Modyfikuj post</a>
+    <a href="/forum/details/{{ post.id }}/delete" class="btn">Usun post</a>
+    <a href="/forum/posts/{{ post.topic.id }}" class="btn">Go Back</a>
+{% endblock %}

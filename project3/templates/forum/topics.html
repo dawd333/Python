@@ -1,0 +1,12 @@
+{% extends 'forum/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{ title }}: {{ section.title }}</h3>
+    <ul class="collection">
+        {% for topic in topics %}
+            <li class="collection-item"><div>{{ topic.title }}<a class="btn-small blue lighten-1 center-align" href="/forum/posts/{{ topic.id }}">Sprawdz posty w temacie</a></div></li>
+        {% endfor %}
+    </ul>
+    <a href="/forum/topics/{{ section.id }}/add" class="btn">Dodaj temat</a>
+    <a href="/forum/sections" class="btn">Go Back</a>
+{% endblock %}
